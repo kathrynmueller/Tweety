@@ -1,0 +1,24 @@
+<h1>@<%= current_user.username %>'s Twitter Feed</h1>
+
+<%= link_to 'Write New Tweet', new_tweet_path, class: "btn btn-default" %>
+
+<p>Here is what your "friends" are saying:</p>
+
+
+<div class="row">
+	<div class="col-md-3">
+	</div>
+	<div class="col-md-6">
+		<% @following_tweets.each do |tweet| %>
+			<div class="card">
+				<strong>@<%= link_to tweet.user.username, show_user_path(id: tweet.user_id) %></strong>
+	    		<p><%= tweet.message.html_safe %></p>
+			</div>
+		<% end %>
+
+
+	</div>
+	<div class="col-md-3">
+	</div>
+
+</div>

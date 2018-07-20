@@ -1,23 +1,38 @@
 <h1>@<%= @user.username %>'s Profile & Tweets</h1>
 
+<div class="row">
+	<div class="col-md-3">
+		<p><strong>@<%= @user.name %></strong></p>
+	<p><strong>Location:</strong><br>
+	<%= @user.location %></p>
+	<p><strong>About:</strong><br>
+	<%= @user.bio %></p>
+	<%= image_tag current_user.avatar.url, class: "profile-image" %>
 
-<p><strong><%= @user.name %></strong></p>
-<p><%= @user.location %></p>
-<p><%= @user.bio %></p>
+	<p>
+	    <% if current_user.following.include?(@user.id) %>
+	        <%= link_to "Unfollow", unfollow_path(id: @user.id), class: "btn btn-default" %>
+	    <% else %>
+	        <% if current_user.id != @user.id %>
+		    <%= link_to "Follow", now_following_path(id: @user.id), class: "btn btn-default" %>
+		<% end %>
+	    <% end %>
+	</p>
+	</div>
 
-<p>
-    <% if current_user.following.include?(@user.id) %>
-        <%= link_to "Unfollow", unfollow_path(id: @user.id), class: "btn btn-default" %>
-    <% else %>
-        <% if current_user.id != @user.id %>
-	    <%= link_to "Follow", now_following_path(id: @user.id), class: "btn btn-default" %>
-	<% end %>
-    <% end %>
-</p>
+	<div class="col-md-6">
 
-<% @user.tweets.each do |tweet| %>
-    <div class="card">
-        <p>@<%= tweet.user.username %></p>
-	<p><%= tweet.message %></p>
-    </div>
-<% end %>
+	<% @user.tweets.each do |tweet| %>
+				<div class="media some-space">
+				  	<%= image_tag tweet.user.avatar.url, class: "mr-3 avatar", alt: "User avatar"%>
+				  		<div class="media-body">
+				    		<h5 class="mt-0">@<%= link_to tweet.user.username, show_user_path(id: tweet.user_id) %></h5>
+				    			<%= tweet.message.html_safe %>
+				  		</div>
+				</div>
+			<% end %>
+	</div>
+
+	<div class="col-md-3">
+	</div>
+</div>

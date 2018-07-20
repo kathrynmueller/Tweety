@@ -7,6 +7,8 @@ class User < ApplicationRecord
 # associations
   has_many :tweets
 
+  mount_uploader :avatar, AvatarUploader
+
   # validations:
   validates :username, presence: true, uniqueness: true
 

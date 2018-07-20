@@ -1,3 +1,5 @@
+
+
 <%= form_with(model: tweet, local: true) do |form| %>
   <% if tweet.errors.any? %>
     <div id="error_explanation">
@@ -12,7 +14,7 @@
   <% end %>
 
   <div class="form-group">
-    <%= form.label :message %>
+    <%= form.label "What's up?" %>
     <%= form.text_field :message, class: "form-control tweet" %>
   </div>
 

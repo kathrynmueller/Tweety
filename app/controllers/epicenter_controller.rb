@@ -4,16 +4,9 @@ class EpicenterController < ApplicationController
 
 
   def feed
-  	# @user = User.find(params[:id])
-    # start with an empty array:
-    @following_tweets = []
-
-    # push into the array if tweet comes from a user or someone being followed
-    Tweet.all.each do |tweet|
-      if current_user.following.include?(tweet.user_id) || current_user.id == tweet.user_id
-        @following_tweets.push(tweet)
-      end
-    end
+    @following_tweets = Tweet.where(user_id: current_user.following.push(current_user.id))
+                          .order(created_at: :desc)
+    @users = User.all
   end
 
   def show_user
@@ -31,4 +24,9 @@ class EpicenterController < ApplicationController
   	current_user.save
   	redirect_to show_user_path(id: params[:id])
   end
+
+  def tag_tweets
+    @tag = Tag.find(params[:id])
+  end
+
 end

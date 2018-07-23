@@ -1,17 +1,19 @@
 <div class="row">
 	<div class="col-md-3">
+		<h3>People to Follow</h3>
+			<% @users.each do |user| %>
+			<%= link_to user.username, show_user_path(id: user.id) %>				
+			<p><%= user.username %></p>
+		<% end %>
+
 	</div>
 	<div class="col-md-6">
-		<%= link_to 'Write New Tweet', new_tweet_path, class: "btn btn-default" %>
+
+		<%= render 'tweets/form', tweet: Tweet.new %>
+
 		<h1>@<%= current_user.username %>'s Twitter Feed</h1>
 		<% @following_tweets.each do |tweet| %>
-			<div class="media some-space">
-			  	<%= image_tag tweet.user.avatar.url, class: "mr-3 avatar", alt: "User avatar"%>
-			  		<div class="media-body">
-			    		<h5 class="mt-0">@<%= link_to tweet.user.username, show_user_path(id: tweet.user_id) %></h5>
-			    			<%= tweet.message.html_safe %>
-			  		</div>
-			</div>
+			<%= render tweet %>
 		<% end %>
 
 

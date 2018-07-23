@@ -1,0 +1,8 @@
+<div class="media some-space">
+	<%= image_tag tweet.user.avatar.url, class: "mr-3 avatar", alt: "User avatar"%>
+		<div class="media-body">
+			<h5 class="mt-0">@<%= link_to tweet.user.username, show_user_path(id: tweet.user_id) %></h5>
+			    			<%= tweet.message.html_safe %><br>
+			    			Created: <%= tweet.created_at %>
+		</div>
+</div>

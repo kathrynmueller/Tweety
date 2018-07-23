@@ -14,8 +14,7 @@
   <% end %>
 
   <div class="form-group">
-    <%= form.label "What's up?" %>
-    <%= form.text_field :message, class: "form-control tweet" %>
+    <%= form.text_field :message, placeholder: "What's up?", class: "form-control tweet" %>
   </div>
 
     <%= form.hidden_field :user_id, value: current_user.id %>

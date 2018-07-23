@@ -1,0 +1,17 @@
+<div>
+    <h1><%= @tag.phrase %></h1>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+  </div>
+  <!-- a place for current user stats -->
+  <div class="col-md-6">
+    <% @tag.tweets.order(created_at: :desc).each do |tweet| %>
+        <%= render @tag.tweets %>
+    <% end %>
+   </div>
+
+   <div class="col-md-3">
+   </div>
+</div>

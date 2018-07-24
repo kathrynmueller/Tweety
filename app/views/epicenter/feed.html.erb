@@ -16,6 +16,10 @@
 		<% @following_tweets.each do |tweet| %>
 			<%= render tweet %>
 		<% end %>
+		<%= paginate @following_tweets %>
+		<%= page_entries_info @following_tweets %>
+
+
 
 
 	</div>

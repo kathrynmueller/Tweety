@@ -1,6 +1,8 @@
 class EpicenterController < ApplicationController
   
   before_action :authenticate_user!
+  # user a symbol name of a method
+  before_action :set_user, only: [:show_user, :following, :followers]
 
 
   def feed
@@ -10,7 +12,23 @@ class EpicenterController < ApplicationController
   end
 
   def show_user
-  	@user = User.find(params[:id])
+  end
+
+  def all_users
+    @users = User.all
+  end
+
+  def following
+    @users = User.where(id: @user.following)
+  end
+
+  def followers
+    @users = []
+
+    User.all.each do |u|
+      @users.push(u) if u.following.include?(@user.id)
+
+    end
   end
 
   def now_following
@@ -27,6 +45,12 @@ class EpicenterController < ApplicationController
 
   def tag_tweets
     @tag = Tag.find(params[:id])
+  end
+
+  private
+
+  def set_user
+        @user = User.find(params[:id])
   end
 
 end

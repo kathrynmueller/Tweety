@@ -1,0 +1,8 @@
+<div class="media">
+  		<img class="mr-3" src="..." alt="Generic placeholder image">
+ 		 <div class="media-body">
+    		<h5 class="mt-0"><%= link_to user.username, show_user_path(id: user.id) %></h5>
+		    <strong>Location: </strong><%= user.location %>
+		    <%= render 'tweets/tweet', tweet: user.tweets.last %>
+  		</div>
+	</div>

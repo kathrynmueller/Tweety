@@ -7,11 +7,11 @@
 	<%= @user.location %></p>
 	<p><strong>About:</strong><br>
 	<%= @user.bio %></p>
-	<%= image_tag current_user.avatar.url, class: "profile-image" %>
+	<%= image_tag @user.avatar.url, class: "profile-image" %>
 
 	<p>
 	    <% if current_user.following.include?(@user.id) %>
-	        <%= link_to "Unfollow", unfollow_path(id: @user.id), class: "btn btn-default" %>
+	        <%= link_to "Following", unfollow_path(id: @user.id), id: 'unfollow_btn',class: "btn btn-default" %>
 	    <% else %>
 	        <% if current_user.id != @user.id %>
 		    <%= link_to "Follow", now_following_path(id: @user.id), class: "btn btn-default" %>
@@ -20,7 +20,18 @@
 	</p>
 	</div>
 
+	
+
 	<div class="col-md-6">
+
+	<ul class="nav nav-tabs">
+		<li class="nav-item">
+			<%= link_to 'Following', following_path(id: @user.id), class: "nav-link" %>
+		</li>
+		<li class="nav-item">
+			<%= link_to 'Followers', followers_path(id: @user.id), class: "nav-link" %>
+		</li>
+	</ul>
 
 	<% @user.tweets.each do |tweet| %>
 				<div class="media some-space">

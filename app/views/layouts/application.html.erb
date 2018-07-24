@@ -16,6 +16,13 @@
        <%= link_to 'Tweety', root_path, class: "navbar-brand" %>
 
       </div>
+
+      <ul class="nav navbar-nav">
+        <li>
+          <%=link_to 'All Tweeties', all_users_path %>
+        </li>
+      </ul>
+
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <li>

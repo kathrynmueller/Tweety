@@ -15,6 +15,10 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
 
+.navbar {
+	margin-bottom: 20px;
+}
+
 .btn {
 	display: block;
 	color: white;

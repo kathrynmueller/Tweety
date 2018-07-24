@@ -1,8 +1,14 @@
 <div class="media some-space">
 	<%= image_tag tweet.user.avatar.url, class: "mr-3 avatar", alt: "User avatar"%>
 		<div class="media-body">
-			<h5 class="mt-0">@<%= link_to tweet.user.username, show_user_path(id: tweet.user_id) %></h5>
+			<h5 class="mt-0">@<%= link_to tweet.user.username, show_user_path(id: tweet.user_id) %> &#8226;  
+
+				<% if tweet.created_at < 1.day.ago %>
+				<%= tweet.created_at.strftime('%b %e') %>
+				<% else %>
+				<%= time_ago_in_words(tweet.created_at)%> ago </h5>
 			    			<%= tweet.message.html_safe %><br>
-			    			Created: <%= tweet.created_at %>
+			    <% end %>
+			    			
 		</div>
 </div>

@@ -8,7 +8,9 @@ class EpicenterController < ApplicationController
   def feed
     @following_tweets = Tweet.where(user_id: current_user.following.push(current_user.id))
                           .order(created_at: :desc).page(params[:page]).per(5)
-    @users_with_tweets = User.where.not(name: [nil, ""])
+    @users_with_tweets = User.joins(:tweets).distinct('users.username')
+    # cole's, something like:
+    # Tweet.select(:message, :user_id).distinct(user_id)
     @tags = Tag.all
   end
 

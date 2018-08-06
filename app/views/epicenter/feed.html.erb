@@ -5,6 +5,15 @@
 		<p><%= link_to 'Following: ', following_path(id: current_user.id) %> <%= pluralize current_user.following.count, 'tweety' %></p>
 
 		<h2>Trending Tags:</h2>
+		<div class="card">
+			<ul>
+				<% @tags.each do |tag| %>
+				<li>
+					<%= link_to tag.phrase, tag_tweets_path(id: tag.id) %>
+				</li>
+				<% end %>
+			<ul>
+		</div>
 
 
 	</div>
@@ -25,6 +34,7 @@
 	</div>
 	<div class="col-md-3">
 		<h3>People to Follow</h3>
+		<!-- this will break if there's a user with no tweet -->
 			<% @users.each do |user| %>
 			<%= render 'tweets/tweet', tweet: user.tweets.last %>			
 		<% end %>

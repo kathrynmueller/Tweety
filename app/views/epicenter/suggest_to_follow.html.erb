@@ -1,0 +1,9 @@
+<h1>Wanna follow these guys, <%= current_user.username %>?</h1>
+
+<div class="row">
+	<% @users.each do |user| %>
+
+	<%= render 'epicenter/user', user: user %>
+	<% end %>
+
+</div>

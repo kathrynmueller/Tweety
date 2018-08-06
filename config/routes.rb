@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 	  get 'all_users' => 'epicenter#all_users'
 	  get 'following' => 'epicenter#following'
 	  get 'followers' => 'epicenter#followers'
+	  get 'suggest_to_follow' => 'epicenter#suggest_to_follow'
 	
 
   	resources :tweets

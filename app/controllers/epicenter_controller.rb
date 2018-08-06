@@ -9,6 +9,7 @@ class EpicenterController < ApplicationController
     @following_tweets = Tweet.where(user_id: current_user.following.push(current_user.id))
                           .order(created_at: :desc).page(params[:page]).per(5)
     @users = User.all
+    @tags = Tag.all
   end
 
   def show_user
@@ -20,6 +21,10 @@ class EpicenterController < ApplicationController
 
   def following
     @users = User.where(id: @user.following)
+  end
+
+  def suggest_to_follow
+    @users = User.where(id: current_user.following=nil)
   end
 
   def followers

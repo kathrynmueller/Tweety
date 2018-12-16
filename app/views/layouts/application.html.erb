@@ -7,21 +7,24 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link href="https://fonts.googleapis.com/css?family=Mukta|Open+Sans|Amatic+SC" rel="stylesheet">
+
   </head>
 
   <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
       <div class="navbar-header">
 
+        <%= link_to root_path do %>
+          <%= image_tag "tweety-md.png", class: "logo", alt: "Tweety Logo"%>
+        <% end %>
+
        <%= link_to 'Tweety', root_path, class: "navbar-brand" %>
 
       </div>
 
-      <ul class="nav navbar-nav">
-        <li>
-          <%=link_to 'All Tweeties', all_users_path %>
-        </li>
-      </ul>
+
 
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
@@ -39,12 +42,13 @@
       </ul>
     </div>
   </nav>
-  
-
 
   <body>
     <div class="container">
         <%= yield %>
     </div>
+      <footer>
+        ©2018 Kathryn Mueller
+      </footer>
   </body>
 </html>

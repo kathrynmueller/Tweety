@@ -1,24 +1,9 @@
-# README
+# Tweety
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Tweety is a web app that mimics Twitter. Users can create a profile, post short messages, and follow each other.
 
-Things you may want to cover:
+* Ruby version: 2.4.1
 
-* Ruby version
+## Try it Out
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Tweety is [deployed on Heroku](https://katmueller-tweety.herokuapp.com/)

@@ -15,8 +15,35 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
 
+body {
+	font-family: 'Open Sans', sans-serif;
+}
+/*
+.container {
+	height: 70vh;
+}*/
+
+h1, h2, h3, h4 {
+	font-family: 'Mukta', sans-serif;
+}
+
 .navbar {
 	margin-bottom: 20px;
+	font-family: 'Mukta', sans-serif;
+}
+
+.navbar a {
+	color: white;
+}
+
+.navbar-brand {
+	font-family: 'Mukta', sans-serif;
+	font-size: 40px;
+}
+
+.logo {
+	height: 100px;
+	width: auto;
 }
 
 .btn {
@@ -60,5 +87,18 @@
 	border-width: 2px;
 	border-color: black;
 	border-radius: 5px;
+
+}
+
+footer {
+/*	position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;*/
+	background-color: #343a40;
+	color: white;
+	text-align: center;
+	padding: 20px;
+	margin-top: 20px;
 
 }
